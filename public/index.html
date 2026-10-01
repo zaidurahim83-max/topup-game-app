@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Toko Diamond - Modular Arsitektur</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>🎮 Top-Up Diamond (Struktur Folder Modular)</h2>
+
+    <div class="form-group">
+        <label>Pilih Produk:</label>
+        <select id="productSelect"></select>
+    </div>
+    <div class="form-group">
+        <label>User ID Game:</label>
+        <input type="text" id="userId" placeholder="Contoh: 12345678">
+    </div>
+    <div class="form-group">
+        <label>Zone ID / Server:</label>
+        <input type="text" id="zoneId" placeholder="Contoh: 1234">
+    </div>
+    <div class="form-group">
+        <label>Metode Pembayaran:</label>
+        <select id="paymentMethod">
+            <option value="QRIS">QRIS</option>
+            <option value="BCA">Transfer BCA</option>
+            <option value="Mandiri">Transfer Mandiri</option>
+        </select>
+    </div>
+    <button onclick="checkout()">Proses Pembayaran</button>
+
+    <div id="paymentResult" class="box" style="display:none;">
+        <h3>📥 Invoice Simulasi</h3>
+        <p><strong>ID Transaksi:</strong> <span id="resTrxId"></span></p>
+        <p><strong>Instruksi:</strong> <span id="resInstruction"></span></p>
+        <div id="qrisContainer" style="text-align:center; display:none;">
+            <img id="qrisImg" src="" alt="QRIS" style="width:150px; height:150px;"><br>
+        </div>
+        <p id="vaContainer" style="display:none; font-weight:bold; font-size:18px;"></p>
+        <button style="background: #007bff; margin-top: 10px;" onclick="simulateSuccess()">Simulasikan Bayar Berhasil</button>
+    </div>
+
+    <hr style="margin: 30px 0;">
+
+    <h3>📊 Riwayat Transaksi</h3>
+    <button style="background: #17a2b8; margin-bottom: 10px; font-size: 14px;" onclick="loadTransactions()">Muat Ulang</button>
+    <table>
+        <thead>
+            <tr>
+                <th>ID Trx</th>
+                <th>Game / Item</th>
+                <th>User / Zone</th>
+                <th>Total</th>
+                <th>Metode</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="trxTableBody"></tbody>
+    </table>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>
